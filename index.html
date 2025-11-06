@@ -13,13 +13,9 @@
       color:#fff;
       min-height:100vh;
       overflow-x:hidden;
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
     }
-
     header { text-align:center; padding:60px 20px 20px; font-size:2.8rem; font-weight:800;
              text-shadow:0 0 30px #00ffa8,0 0 80px #00ffa8; letter-spacing:2px; }
-
     .intro {
       text-align:center; max-width:900px; margin:40px auto;
       background:rgba(0,0,0,0.8); padding:30px; border-radius:16px;
@@ -27,7 +23,6 @@
     }
     .intro h2 { font-size:1.6rem; margin-bottom:14px; text-shadow:0 0 20px #00ffa8; }
     .intro p { color:#ccc; line-height:1.6; }
-
     .start-btn {
       display:inline-block; margin-top:18px; padding:12px 30px;
       background:linear-gradient(90deg,#00ffa8,#009970); color:#000;
@@ -40,7 +35,6 @@
     nav a { color:#00ffa8; font-size:1.05rem; cursor:pointer; text-decoration:none; }
     nav a.active, nav a:hover { color:#fff; text-shadow:0 0 15px #00ffa8,0 0 30px #00ffa8; }
 
-    /* sekcje */
     section {
       background:rgba(0,0,0,0.82); margin:18px auto; max-width:900px;
       border-radius:12px; box-shadow:0 0 30px #00ffa8; overflow:hidden;
@@ -52,19 +46,10 @@
     ul { list-style:none; margin-top:8px; padding:0; }
     li { display:flex; justify-content:space-between; align-items:center; gap:12px;
          padding:8px 0; border-bottom:1px solid rgba(255,255,255,0.03); color:#ddd; }
-
-    code {
-      background:rgba(0,255,168,0.08); padding:6px 9px; border-radius:6px; color:#bfffe0;
-      font-family:monospace;
-    }
-
-    .copy-btn {
-      background:#00ffa8; color:#000; border:none; padding:6px 10px; border-radius:6px;
-      cursor:pointer; font-weight:700;
-    }
+    code { background:rgba(0,255,168,0.08); padding:6px 9px; border-radius:6px; color:#bfffe0; font-family:monospace; }
+    .copy-btn { background:#00ffa8; color:#000; border:none; padding:6px 10px; border-radius:6px; cursor:pointer; font-weight:700; }
     .copy-btn:hover { background:#00ffcc; transform:scale(1.03); }
 
-    /* podsekcje */
     .subkomendy { margin:12px 0; border:1px solid rgba(0,255,168,0.12); border-radius:10px; overflow:hidden; }
     .sub-btn {
       width:100%; text-align:left; padding:12px 16px; background:linear-gradient(90deg,#00ffa8,#009970);
@@ -75,7 +60,6 @@
 
     footer { text-align:center; margin-top:40px; padding:18px; color:#aaa; font-size:.9rem; background:rgba(0,0,0,0.6); }
 
-    /* scrollbar */
     ::-webkit-scrollbar { width:10px; }
     ::-webkit-scrollbar-track { background:rgba(0,0,0,0.6); border-radius:10px; }
     ::-webkit-scrollbar-thumb { background:linear-gradient(180deg,#00ffa8,#009970); border-radius:10px; box-shadow:0 0 15px #00ffa8; }
@@ -87,7 +71,7 @@
 
   <div class="intro">
     <h2>Twoje centrum dowodzenia CS2</h2>
-    <p>Komendy, boty, configi i porady — wszystko gotowe do szybkiego użycia na lokalnym serwerze.</p>
+    <p>Komendy, boty, bronie, configi i porady — wszystko gotowe do szybkiego użycia.</p>
     <a class="start-btn" href="#menu">Zaczynamy</a>
   </div>
 
@@ -110,172 +94,98 @@
       <button class="sub-btn" type="button">🤖 Komendy na boty</button>
       <ul class="sub-list" id="komendy-boty"></ul>
     </div>
+
+    <div class="subkomendy">
+      <button class="sub-btn" type="button">🔫 Komendy na bronie i bindy</button>
+      <ul class="sub-list" id="komendy-bronie"></ul>
+    </div>
   </section>
 
-  <section id="configi"><h2>Configi</h2><p style="padding:0 20px 20px;color:#ccc">Najlepsze configi — wrzuć do cfg i grasz.</p></section>
+  <section id="configi"><h2>Configi</h2><p style="padding:0 20px 20px;color:#ccc">Najlepsze configi — wrzuć do cfg i graj jak pro.</p></section>
   <section id="crosshair"><h2>Crosshair</h2><p style="padding:0 20px 20px;color:#ccc">Przykłady celowników i ustawienia.</p></section>
-  <section id="porady"><h2>Porady</h2><p style="padding:0 20px 20px;color:#ccc">Krótko i na temat — ruch, economy, timing.</p></section>
+  <section id="porady"><h2>Porady</h2><p style="padding:0 20px 20px;color:#ccc">Krótko i na temat — movement, economy, timing.</p></section>
 
   <footer>© 2025 CS2 All In One — fanpage</footer>
 
   <script>
-    // DEBUG start
-    console.log("Script start: DOM should be ready because script is at the end of body.");
-
-    // dane komend (pełna lista treningowe + boty)
     const treningowe = [
-      "sv_cheats 1 – Włącza cheaty na serwerze",
-      "buddha – Nieśmiertelność w CS2",
-      "sv_regeneration_force_on 1 – Regeneracja HP",
-      "sv_regeneration_wait_time 0.5 – Czas regeneracji HP",
-      "noclip – Tryb latania / przenikania przez ścian",
-      "sv_noclipspeed X – Ustala prędkość latania",
-      "impulse 101 – Daje maksymalną ilość pieniędzy (16000$)",
-      "sv_infinite_ammo 1 – Nieskończona amunicja (no reload)",
-      "sv_infinite_ammo 2 – Nieskończona amunicja (z reload)",
-      "sv_showimpacts 1 – Pokazuje impacty (kwadraciki)",
-      "sv_showimpacts_time X – Czas trwania impactów",
-      "mp_team_intro_time 0 – Wyłącza intro agentów",
-      "sv_grenade_trajectory_prac_trailtime 5 – Linie za granatami (czas)",
-      "sv_grenade_trajectory_prac_pipreview 1 – Kamera granatu (preview)",
-      "cl_grenadepreview 1 – Pokazuje trajektorię trzymanego granatu",
-      "sv_rethrow_last_grenade – Odtwarza ostatnio rzucony granat",
-      "ammo_grenade_limit_total 5 – Możliwość noszenia wszystkich granatów",
-      "inferno_flame_lifetime 3 – Szybsze znikanie molotovów",
-      "mp_roundtime_defuse 60 – Runda trwa 60 minut",
-      "mp_ignore_round_win_conditions 1 – Runda się nie kończy",
-      "mp_buytime 9999 – Nieskończony czas na kupno",
-      "mp_buy_anywhere 1 – Kupowanie gdziekolwiek",
-      "host_timescale X – Zmiana prędkości czasu (czas x)",
-      "mp_warmup_end – Kończy rozgrzewkę",
-      "roundend – Szybkie zakończenie rundy",
-      "mp_free_armor 1 – Darmowa kamizelka przy odrodzeniu",
-      "mp_solid_teammates 1 – Przenikanie przez sojuszników",
-      "mp_give_player_c4 0 – Wyłącza C4",
-      "sv_ignoregrenaderadio 0 – Włącza odgłosy przy rzucaniu granatów"
+      "sv_cheats 1 – Włącza cheaty",
+      "noclip – Latanie po mapie",
+      "impulse 101 – Daje 16000$",
+      "sv_infinite_ammo 1 – Nieskończona amunicja",
+      "sv_grenade_trajectory 1 – Pokazuje trajektorię granatów",
+      "mp_buy_anywhere 1 – Kupowanie wszędzie"
     ];
 
     const boty = [
-      "bot_quota X – Ustala ilość grających botów na serwerze",
-      "bot_kick – Wyrzuca wszystkie boty z serwera",
-      "bot_kick t – Wyrzuca boty z drużyny Terro",
-      "bot_kick ct – Wyrzuca boty z drużyny CT",
-      "bot_kick <nick> – Wyrzuca danego bota (podaj nick)",
-      "bot_add_ct – Dodaje bota dla drużyny CT",
-      "bot_add_t – Dodaje bota dla drużyny T",
-      "bot_dont_shoot 1 – Boty nie będą strzelać",
-      "bot_knives_only 1 – Boty używają tylko noży",
-      "bot_pistols_only 1 – Boty używają tylko pistoletów",
-      "bot_all_weapons 1 – Boty używają wszystkich broni",
-      "bot_stop 1 – Boty zatrzymują się w miejscu",
-      "bot_place – Ustawia bota w miejscu, w którym stoisz",
-      "bot_crouch – Boty cały czas kucają",
-      "bot_difficulty 0-3 – Poziom trudności botów (0 najłatwiej, 3 najtrudniej)"
+      "bot_kick – Wyrzuca wszystkie boty",
+      "bot_add_ct – Dodaje bota CT",
+      "bot_add_t – Dodaje bota T",
+      "bot_stop 1 – Zatrzymuje boty",
+      "bot_difficulty 3 – Najtrudniejszy poziom botów"
     ];
 
-    // pomocniczna funkcja: rozdziela komendę od opisu, obsługuje różne myślniki
+    const bronie = [
+      "give weapon_m4a1_silencer – M4A1-S",
+      "give weapon_m4a1 – M4A4",
+      "give weapon_ak47 – AK-47",
+      "give weapon_awp – AWP",
+      "give weapon_c4 – C4",
+      "give weapon_glock – Glock",
+      "give weapon_hkp2000 – USP-S",
+      "give weapon_flashbang – Flashbang",
+      "give weapon_smokegrenade – Smoke",
+      "give weapon_hegrenade – HE granat",
+      "give weapon_incgrenade – Incgrenade",
+      "give weapon_molotov – Molotov",
+      "give weapon_decoy – Decoy",
+      "bind \"klawisz\" \"noclip\" – Bind na latanie (noclip)",
+      "bind \"klawisz\" \"sv_rethrow_last_grenade\" – Bind na ponowne rzucenie granatu"
+    ];
+
     function splitCmd(str) {
-      // dzieli po ' – ' (EN DASH), ' - ' (hyphen) lub ' — ' (EM DASH) albo zwykły dash bez spacji
-      const parts = str.split(/\s–\s|\s-\s|\s—\s|–|—| - /);
-      if (parts.length >= 2) {
-        const cmd = parts[0].trim();
-        const desc = parts.slice(1).join(' – ').trim();
-        return [cmd, desc];
-      }
-      return [str, ''];
+      const parts = str.split(/\s–\s|\s-\s|–|—/);
+      return [parts[0].trim(), parts.slice(1).join(' – ').trim()];
     }
 
     function generujListe(id, dane) {
       const lista = document.getElementById(id);
-      if (!lista) {
-        console.warn("Brak elementu listy o id:", id);
-        return;
-      }
-      lista.innerHTML = ''; // wyczyść na start
+      if (!lista) return;
+      lista.innerHTML = '';
       dane.forEach(k => {
         const [cmd, desc] = splitCmd(k);
         const li = document.createElement('li');
-        li.innerHTML = `<div style="display:flex;gap:10px;align-items:center"><code>${cmd}</code><span style="color:#bbb">${desc ? '– ' + desc : ''}</span></div><button class='copy-btn' type="button">Kopiuj</button>`;
+        li.innerHTML = `<div><code>${cmd}</code> <span style="color:#bbb">${desc ? '– ' + desc : ''}</span></div><button class='copy-btn'>Kopiuj</button>`;
         lista.appendChild(li);
       });
-      console.log("Wygenerowano listę:", id, "pozycje:", dane.length);
     }
 
-    // generuj listy
     generujListe("komendy-treningowe", treningowe);
     generujListe("komendy-boty", boty);
+    generujListe("komendy-bronie", bronie);
 
-    // obsługa rozwijanych podsekcji
-    const subBtns = document.querySelectorAll('.sub-btn');
-    subBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        const list = btn.nextElementSibling;
-        if (!list) return;
-        list.classList.toggle('active');
-      });
+    document.querySelectorAll('.sub-btn').forEach(btn => {
+      btn.addEventListener('click', () => btn.nextElementSibling.classList.toggle('active'));
     });
 
-    // otwórz domyślnie pierwszy panel treningowe (dla widoczności)
-    const firstList = document.getElementById('komendy-treningowe');
-    if (firstList) firstList.classList.add('active');
-
-    // obsługa kopiowania (delegacja)
-    document.addEventListener('click', (e) => {
-      const target = e.target;
-      if (target && target.classList && target.classList.contains('copy-btn')) {
-        const li = target.closest('li');
-        if (!li) return;
-        const codeEl = li.querySelector('code');
-        if (!codeEl) return;
-        const text = codeEl.textContent.trim();
-        // spróbuj zapisać do schowka
-        navigator.clipboard.writeText(text).then(() => {
-          const old = target.textContent;
-          target.textContent = 'Skopiowano!';
-          target.style.background = '#00cc88';
-          setTimeout(() => { target.textContent = old; target.style.background = ''; }, 1400);
-        }).catch(err => {
-          console.error("Błąd kopiowania:", err);
-          alert("Nie udało się skopiować (przeglądarka zablokowała schowek). Skopiuj ręcznie: " + text);
+    document.addEventListener('click', e => {
+      if (e.target.classList.contains('copy-btn')) {
+        const code = e.target.parentElement.querySelector('code').textContent.trim();
+        navigator.clipboard.writeText(code).then(() => {
+          e.target.textContent = "Skopiowano!";
+          setTimeout(() => e.target.textContent = "Kopiuj", 1200);
         });
       }
     });
 
-    // obsługa górnego menu (przełącz sekcji)
-    const topLinks = document.querySelectorAll('nav a[data-target]');
-    const allSections = document.querySelectorAll('section');
-
-    topLinks.forEach(link => {
+    document.querySelectorAll('nav a[data-target]').forEach(link => {
       link.addEventListener('click', () => {
-        const id = link.getAttribute('data-target');
-        const sec = document.getElementById(id);
-        if (!sec) return;
-        // zamknij inne
-        allSections.forEach(s => s.classList.remove('active'));
+        document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
+        const sec = document.getElementById(link.dataset.target);
         sec.classList.add('active');
-        // w przypadku sekcji komendy — rozwiń pierwszą podlistę dla widoczności
-        if (id === 'komendy') {
-          const st = sec.querySelector('.sub-list');
-          if (st) st.classList.add('active');
-        }
-        sec.scrollIntoView({behavior:'smooth', block:'start'});
+        sec.scrollIntoView({behavior:'smooth'});
       });
     });
-
-    // aktywne odznaczanie w menu przy scrollu
-    window.addEventListener('scroll', () => {
-      let cur = '';
-      allSections.forEach(s => {
-        const top = s.getBoundingClientRect().top;
-        if (top <= 150) cur = s.id;
-      });
-      topLinks.forEach(a => {
-        a.classList.toggle('active', a.getAttribute('data-target') === cur);
-      });
-    });
-
-    console.log("Skrypt zainicjowany poprawnie.");
-    // DEBUG end
   </script>
 </body>
 </html>
