@@ -5,12 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CS2 All In One</title>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Segoe UI', sans-serif;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
 
     body {
       background: url('thumb-1920-1333090.png') no-repeat center center fixed;
@@ -40,65 +35,31 @@
       backdrop-filter: blur(4px);
     }
 
-    .intro h2 {
-      font-size: 1.8em;
-      margin-bottom: 20px;
-      text-shadow: 0 0 20px #00ffa8;
-    }
-
-    .intro p {
-      font-size: 1.1em;
-      line-height: 1.6em;
-      color: #ccc;
-    }
+    .intro h2 { font-size: 1.8em; margin-bottom: 20px; text-shadow: 0 0 20px #00ffa8; }
+    .intro p { font-size: 1.1em; line-height: 1.6em; color: #ccc; }
 
     .start-btn {
-      display: inline-block;
-      margin-top: 30px;
-      padding: 15px 40px;
-      background: linear-gradient(90deg, #00ffa8, #009970);
-      color: #000;
-      font-size: 1.2em;
-      font-weight: bold;
-      border-radius: 10px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      text-decoration: none;
-      box-shadow: 0 0 25px #00ffa8;
-      transition: all 0.3s;
+      display: inline-block; margin-top: 30px; padding: 15px 40px;
+      background: linear-gradient(90deg, #00ffa8, #009970); color: #000;
+      font-size: 1.2em; font-weight: bold; border-radius: 10px;
+      text-transform: uppercase; letter-spacing: 1px; text-decoration: none;
+      box-shadow: 0 0 25px #00ffa8; transition: all 0.3s;
     }
-
-    .start-btn:hover {
-      background: linear-gradient(90deg, #00ffcc, #00aa88);
-      box-shadow: 0 0 40px #00ffa8, 0 0 80px #00ffa8;
-      transform: scale(1.05);
-    }
+    .start-btn:hover { background: linear-gradient(90deg, #00ffcc, #00aa88); box-shadow: 0 0 40px #00ffa8, 0 0 80px #00ffa8; transform: scale(1.05); }
 
     nav {
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-      margin: 60px 0 40px;
+      display: flex; justify-content: center; gap: 30px; margin: 60px 0 40px;
     }
-
     nav a {
-      color: #00ffa8;
-      font-size: 1.2em;
-      text-decoration: none;
-      transition: 0.3s;
-      cursor: pointer;
+      color: #00ffa8; font-size: 1.2em; text-decoration: none;
+      transition: 0.3s; cursor: pointer;
     }
-
-    nav a:hover,
-    nav a.active {
-      text-shadow: 0 0 15px #00ffa8, 0 0 30px #00ffa8;
-      color: #fff;
-    }
+    nav a:hover, nav a.active { text-shadow: 0 0 15px #00ffa8, 0 0 30px #00ffa8; color: #fff; }
 
     section {
       background-color: rgba(0, 0, 0, 0.75);
       margin: 20px auto;
-      max-width: 800px;
+      max-width: 900px;
       padding: 0;
       border-radius: 15px;
       box-shadow: 0 0 30px #00ffa8;
@@ -108,46 +69,30 @@
       transform: scaleY(0.9);
       transition: all 0.5s ease-out;
     }
+    section.active { padding: 40px; max-height: 1500px; opacity: 1; transform: scaleY(1); }
+    section.visible { box-shadow: 0 0 40px #00ffa8, 0 0 60px #00ffa8; }
 
-    section.active {
-      padding: 40px;
-      max-height: 600px;
-      opacity: 1;
-      transform: scaleY(1);
-    }
+    footer { text-align: center; margin-top: 60px; padding: 20px; color: #aaa; font-size: 0.9em; background-color: rgba(0, 0, 0, 0.7); }
 
-    section.visible {
-      box-shadow: 0 0 40px #00ffa8, 0 0 60px #00ffa8;
-    }
-
-    footer {
-      text-align: center;
-      margin-top: 60px;
-      padding: 20px;
-      color: #aaa;
-      font-size: 0.9em;
-      background-color: rgba(0, 0, 0, 0.7);
-    }
-
-    ::-webkit-scrollbar {
-      width: 10px;
-    }
-
-    ::-webkit-scrollbar-track {
-      background: rgba(0, 0, 0, 0.7);
-      border-radius: 10px;
-    }
-
+    ::-webkit-scrollbar { width: 10px; }
+    ::-webkit-scrollbar-track { background: rgba(0, 0, 0, 0.7); border-radius: 10px; }
     ::-webkit-scrollbar-thumb {
       background: linear-gradient(180deg, #00ffa8, #009970);
-      border-radius: 10px;
-      box-shadow: 0 0 15px #00ffa8;
-      transition: 0.3s;
+      border-radius: 10px; box-shadow: 0 0 15px #00ffa8; transition: 0.3s;
     }
-
     ::-webkit-scrollbar-thumb:hover {
       background: linear-gradient(180deg, #00ffbb, #00cc88);
       box-shadow: 0 0 25px #00ffa8, 0 0 40px #00ffa8;
+    }
+
+    ul { list-style: none; margin-top: 20px; }
+    li { margin: 8px 0; line-height: 1.5em; }
+    code {
+      background: rgba(0, 255, 168, 0.15);
+      padding: 3px 6px;
+      border-radius: 5px;
+      font-family: monospace;
+      color: #00ffb7;
     }
   </style>
 </head>
@@ -157,17 +102,52 @@
   <div class="intro">
     <h2>Witaj w centrum dowodzenia gracza CS2</h2>
     <p>
-      Jeśli myślisz, że masz dobrego aim’a, to sprawdź go po tym, jak ustawisz wszystko pod siebie.  
-      Znajdziesz tu configi, celowniki, porady i triki — jednym słowem, wszystko, co trzeba, żeby przestać być randomem z MM.
+      Tutaj nie ma miejsca na przypadek. Wszystko, czego potrzebujesz — od komend, przez configi, po celowniki i porady.  
+      To Twoje HQ — miejsce, w którym zaczyna się każda dobra rozgrywka.
     </p>
     <a href="#menu" class="start-btn">Zaczynamy</a>
   </div>
 
   <nav id="menu">
+    <a data-target="komendy">Komendy</a>
     <a data-target="configi">Configi</a>
     <a data-target="crosshair">Crosshair</a>
     <a data-target="porady">Porady</a>
   </nav>
+
+  <section id="komendy">
+    <h2>Komendy treningowe CS2</h2>
+    <ul>
+      <li><code>sv_cheats 1</code> – Włącza cheaty na serwerze.</li>
+      <li><code>buddha</code> – Nieśmiertelność (HP nie spada do 0).</li>
+      <li><code>sv_regeneration_force_on 1</code> – Regeneracja HP.</li>
+      <li><code>sv_regeneration_wait_time 0.5</code> – Czas regeneracji HP.</li>
+      <li><code>noclip</code> – Latanie i przenikanie przez ściany. Użyj: <code>bind f noclip</code>.</li>
+      <li><code>sv_noclipspeed X</code> – Ustal prędkość latania.</li>
+      <li><code>impulse 101</code> – Daje max hajsu (16000$).</li>
+      <li><code>sv_infinite_ammo 1 / 2</code> – Nieskończona amunicja.</li>
+      <li><code>sv_showimpacts 1</code> – Pokazuje gdzie lecą kule.</li>
+      <li><code>sv_showimpacts_time X</code> – Czas trwania znaczników strzałów.</li>
+      <li><code>mp_team_intro_time 0</code> – Wyłącza intro z agentami.</li>
+      <li><code>sv_grenade_trajectory_prac_trailtime 5</code> – Linie trajektorii granatów.</li>
+      <li><code>sv_grenade_trajectory_prac_pipreview 1</code> – Kamera granatu.</li>
+      <li><code>cl_grenadepreview 1</code> – Pokazuje trajektorię granatu.</li>
+      <li><code>sv_rethrow_last_grenade</code> – Powtarza ostatni granat.</li>
+      <li><code>ammo_grenade_limit_total 5</code> – Możesz mieć wszystkie granaty.</li>
+      <li><code>inferno_flame_lifetime 3</code> – Mołotowy szybciej gasną.</li>
+      <li><code>mp_roundtime_defuse 60</code> – Runda trwa 60 minut.</li>
+      <li><code>mp_ignore_round_win_conditions 1</code> – Runda się nie kończy.</li>
+      <li><code>mp_buytime 9999</code> – Nieskończony czas kupna.</li>
+      <li><code>mp_buy_anywhere 1</code> – Kupuj gdzie chcesz.</li>
+      <li><code>host_timescale X</code> – Zmienia prędkość czasu.</li>
+      <li><code>mp_warmup_end</code> – Kończy rozgrzewkę.</li>
+      <li><code>roundend</code> – Szybkie zakończenie rundy.</li>
+      <li><code>mp_free_armor 1</code> – Darmowy armor przy spawnie.</li>
+      <li><code>mp_solid_teammates 1</code> – Można przenikać przez sojuszników.</li>
+      <li><code>mp_give_player_c4 0</code> – Wyłącza C4.</li>
+      <li><code>sv_ignoregrenaderadio 0</code> – Włącza komunikaty przy rzucaniu granatu.</li>
+    </ul>
+  </section>
 
   <section id="configi">
     <h2>Configi</h2>
