@@ -4,17 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CS2 All In One</title>
-
-  <!-- 🔥 Czcionka (Orbitron = styl gamingowy) -->
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&display=swap" rel="stylesheet">
-
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Orbitron', sans-serif;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Orbitron', sans-serif; }
 
     body {
       background: rgba(0, 0, 0, 0.95) url('thumb-1920-1333090.png') no-repeat center center fixed;
@@ -42,35 +34,17 @@
       padding: 40px;
       border-radius: 20px;
       box-shadow: 0 0 40px #00ffa8;
-      backdrop-filter: blur(8px);
     }
 
-    .intro h2 {
-      font-size: 1.8em;
-      margin-bottom: 20px;
-      text-shadow: 0 0 20px #00ffa8;
-    }
-
-    .intro p {
-      font-size: 1.1em;
-      line-height: 1.6em;
-      color: #ccc;
-    }
+    .intro h2 { font-size: 1.8em; margin-bottom: 20px; text-shadow: 0 0 20px #00ffa8; }
+    .intro p { font-size: 1.1em; line-height: 1.6em; color: #ccc; }
 
     .start-btn {
-      display: inline-block;
-      margin-top: 30px;
-      padding: 15px 40px;
+      display: inline-block; margin-top: 30px; padding: 15px 40px;
       background: linear-gradient(90deg, #00ffa8, #009970);
-      color: #000;
-      font-size: 1.2em;
-      font-weight: bold;
-      border-radius: 10px;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      text-decoration: none;
-      box-shadow: 0 0 25px #00ffa8;
-      transition: all 0.3s;
+      color: #000; font-size: 1.2em; font-weight: bold;
+      border-radius: 10px; text-transform: uppercase; letter-spacing: 2px;
+      text-decoration: none; box-shadow: 0 0 25px #00ffa8; transition: all 0.3s;
     }
 
     .start-btn:hover {
@@ -80,26 +54,10 @@
     }
 
     nav {
-      display: flex;
-      justify-content: center;
-      gap: 40px;
-      margin: 60px 0 40px;
+      display: flex; justify-content: center; gap: 40px; margin: 60px 0 40px;
     }
-
-    nav a {
-      color: #00ffa8;
-      font-size: 1.2em;
-      text-decoration: none;
-      transition: 0.3s;
-      cursor: pointer;
-      position: relative;
-    }
-
-    nav a:hover,
-    nav a.active {
-      text-shadow: 0 0 15px #00ffa8, 0 0 30px #00ffa8;
-      color: #fff;
-    }
+    nav a { color: #00ffa8; font-size: 1.2em; text-decoration: none; transition: 0.3s; cursor: pointer; }
+    nav a:hover, nav a.active { text-shadow: 0 0 15px #00ffa8, 0 0 30px #00ffa8; color: #fff; }
 
     section {
       background-color: rgba(0, 0, 0, 0.8);
@@ -115,22 +73,11 @@
       transition: all 0.5s ease-out;
     }
 
-    section.active {
-      padding: 40px;
-      max-height: 2000px;
-      opacity: 1;
-      transform: scaleY(1);
-    }
-
-    section h2 {
-      margin-bottom: 20px;
-      font-size: 1.8em;
-      text-shadow: 0 0 25px #00ffa8;
-      text-align: center;
-    }
+    section.active { padding: 40px; max-height: 3000px; opacity: 1; transform: scaleY(1); }
+    section h2 { margin-bottom: 20px; font-size: 1.8em; text-shadow: 0 0 25px #00ffa8; text-align: center; }
 
     ul { list-style: none; margin-top: 20px; }
-    li { margin: 12px 0; line-height: 1.5em; display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+    li { margin: 10px 0; line-height: 1.5em; display: flex; align-items: center; justify-content: space-between; gap: 10px; }
 
     code {
       background: rgba(0, 255, 168, 0.15);
@@ -138,7 +85,6 @@
       border-radius: 6px;
       font-family: monospace;
       color: #00ffb7;
-      font-size: 1em;
       box-shadow: 0 0 10px #00ffa8 inset;
     }
 
@@ -152,34 +98,18 @@
       cursor: pointer;
       transition: 0.2s;
     }
-
     .copy-btn:hover {
       background: #00ffcc;
       box-shadow: 0 0 10px #00ffa8;
       transform: scale(1.05);
     }
 
-    footer {
-      text-align: center;
-      margin-top: 60px;
-      padding: 20px;
-      color: #aaa;
-      font-size: 0.9em;
-      background-color: rgba(0, 0, 0, 0.7);
-    }
+    footer { text-align: center; margin-top: 60px; padding: 20px; color: #aaa; font-size: 0.9em; background-color: rgba(0, 0, 0, 0.7); }
 
     ::-webkit-scrollbar { width: 10px; }
     ::-webkit-scrollbar-track { background: rgba(0, 0, 0, 0.7); border-radius: 10px; }
-    ::-webkit-scrollbar-thumb {
-      background: linear-gradient(180deg, #00ffa8, #009970);
-      border-radius: 10px;
-      box-shadow: 0 0 15px #00ffa8;
-      transition: 0.3s;
-    }
-    ::-webkit-scrollbar-thumb:hover {
-      background: linear-gradient(180deg, #00ffbb, #00cc88);
-      box-shadow: 0 0 25px #00ffa8, 0 0 40px #00ffa8;
-    }
+    ::-webkit-scrollbar-thumb { background: linear-gradient(180deg, #00ffa8, #009970); border-radius: 10px; box-shadow: 0 0 15px #00ffa8; transition: 0.3s; }
+    ::-webkit-scrollbar-thumb:hover { background: linear-gradient(180deg, #00ffbb, #00cc88); box-shadow: 0 0 25px #00ffa8, 0 0 40px #00ffa8; }
   </style>
 </head>
 
@@ -188,11 +118,8 @@
 
   <div class="intro">
     <h2>Twoje centrum dowodzenia CS2</h2>
-    <p>
-      To nie jest zwykła strona — to Twój arsenał.  
-      Komendy, configi, celowniki i porady, które zamienią Cię z typowego „silverka” w potwora z Faceita.  
-      Kliknij, odkrywaj i rób miazgę.
-    </p>
+    <p>Komendy, configi, crosshairy i porady — wszystko w jednym miejscu.  
+      Od teraz trening nie jest nudny, tylko skuteczny 💪</p>
     <a href="#menu" class="start-btn">Zaczynamy</a>
   </div>
 
@@ -205,33 +132,22 @@
 
   <section id="komendy">
     <h2>Komendy treningowe CS2</h2>
-    <ul>
-      <li><code>sv_cheats 1</code> – Włącza cheaty. <button class="copy-btn">Kopiuj</button></li>
-      <li><code>buddha</code> – Nieśmiertelność. <button class="copy-btn">Kopiuj</button></li>
-      <li><code>sv_regeneration_force_on 1</code> – Regeneracja HP. <button class="copy-btn">Kopiuj</button></li>
-      <li><code>sv_regeneration_wait_time 0.5</code> – Czas regeneracji HP. <button class="copy-btn">Kopiuj</button></li>
-      <li><code>noclip</code> – Latanie. <button class="copy-btn">Kopiuj</button></li>
-      <li><code>sv_noclipspeed X</code> – Prędkość lotu. <button class="copy-btn">Kopiuj</button></li>
-      <li><code>impulse 101</code> – Max kasa. <button class="copy-btn">Kopiuj</button></li>
-      <li><code>sv_infinite_ammo 1</code> – Nieskończona amunicja. <button class="copy-btn">Kopiuj</button></li>
-      <li><code>sv_showimpacts 1</code> – Pokazuje gdzie leci kula. <button class="copy-btn">Kopiuj</button></li>
-      <li><code>mp_buy_anywhere 1</code> – Kupowanie wszędzie. <button class="copy-btn">Kopiuj</button></li>
-    </ul>
+    <ul id="komendy-lista"></ul>
   </section>
 
   <section id="configi">
     <h2>Configi</h2>
-    <p>Najlepsze configi pro graczy — gotowe do kopiowania.</p>
+    <p>Najlepsze configi od graczy pro — wystarczy skopiować i używać.</p>
   </section>
 
   <section id="crosshair">
     <h2>Crosshair</h2>
-    <p>Idealne celowniki — bo każdy headshot zaczyna się od punktu.</p>
+    <p>Celowniki, które wyglądają i trafiają lepiej niż AWP s1mple’a.</p>
   </section>
 
   <section id="porady">
     <h2>Porady</h2>
-    <p>Jak grać, żeby nie ginąć. Albo chociaż ginąć stylowo 😎</p>
+    <p>Nie tylko aim — taktyka, ruch, timing i trochę psychologii 😎</p>
   </section>
 
   <footer>
@@ -239,10 +155,48 @@
   </footer>
 
   <script>
+    const komendy = [
+      "sv_cheats 1 – Włącza cheaty",
+      "buddha – Nieśmiertelność",
+      "sv_regeneration_force_on 1 – Regeneracja HP",
+      "sv_regeneration_wait_time 0.5 – Czas regeneracji HP",
+      "noclip – Tryb latania / przenikania przez ściany",
+      "sv_noclipspeed X – Prędkość latania",
+      "impulse 101 – Maksymalna kasa",
+      "sv_infinite_ammo 1/2 – Nieskończona amunicja",
+      "sv_showimpacts 1 – Pokazuje trafienia",
+      "sv_showimpacts_time X – Czas trwania znaczników",
+      "mp_team_intro_time 0 – Wyłącza intro agentów",
+      "sv_grenade_trajectory_prac_trailtime 5 – Linia granatu",
+      "sv_grenade_trajectory_prac_pipreview 1 – Kamera granatu",
+      "cl_grenadepreview 1 – Trajektoria trzymanego granatu",
+      "sv_rethrow_last_grenade – Powtarza ostatni rzut",
+      "ammo_grenade_limit_total 5 – Wszystkie granaty naraz",
+      "inferno_flame_lifetime 3 – Krótsze mołotowy",
+      "mp_roundtime_defuse 60 – 60 minut rundy",
+      "mp_ignore_round_win_conditions 1 – Runda się nie kończy",
+      "mp_buytime 9999 – Nieskończony czas kupna",
+      "mp_buy_anywhere 1 – Kupowanie gdziekolwiek",
+      "host_timescale X – Zmienia prędkość gry",
+      "mp_warmup_end – Kończy rozgrzewkę",
+      "roundend – Kończy rundę",
+      "mp_free_armor 1 – Darmowa kamizelka",
+      "mp_solid_teammates 1 – Przenikanie przez sojuszników",
+      "mp_give_player_c4 0 – Wyłącza C4",
+      "sv_ignoregrenaderadio 0 – Włącza głosy przy rzucaniu granatu"
+    ];
+
+    const lista = document.getElementById("komendy-lista");
+    komendy.forEach(k => {
+      const [cmd, desc] = k.split(" – ");
+      const li = document.createElement("li");
+      li.innerHTML = `<code>${cmd}</code> – ${desc} <button class='copy-btn'>Kopiuj</button>`;
+      lista.appendChild(li);
+    });
+
     // 🔥 Sekcje rozwijane
     const links = document.querySelectorAll('nav a[data-target]');
     const sectionsList = document.querySelectorAll('section');
-
     links.forEach(link => {
       link.addEventListener('click', () => {
         const id = link.getAttribute('data-target');
@@ -253,33 +207,18 @@
       });
     });
 
-    // ✨ Podświetlanie aktywnej zakładki
-    const navLinks = document.querySelectorAll('nav a');
-    window.addEventListener('scroll', () => {
-      let current = '';
-      sectionsList.forEach(section => {
-        const sectionTop = section.offsetTop - 200;
-        if (pageYOffset >= sectionTop) current = section.getAttribute('id');
-      });
-      navLinks.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('data-target') === current) link.classList.add('active');
-      });
-    });
-
-    // 📋 Kopiowanie komend
-    const copyButtons = document.querySelectorAll('.copy-btn');
-    copyButtons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        const code = btn.previousElementSibling.textContent;
+    // 📋 Kopiowanie
+    document.addEventListener('click', e => {
+      if (e.target.classList.contains('copy-btn')) {
+        const code = e.target.parentElement.querySelector('code').textContent;
         navigator.clipboard.writeText(code);
-        btn.textContent = 'Skopiowano!';
-        btn.style.background = '#00cc88';
+        e.target.textContent = 'Skopiowano!';
+        e.target.style.background = '#00cc88';
         setTimeout(() => {
-          btn.textContent = 'Kopiuj';
-          btn.style.background = '#00ffa8';
+          e.target.textContent = 'Kopiuj';
+          e.target.style.background = '#00ffa8';
         }, 1500);
-      });
+      }
     });
   </script>
 </body>
