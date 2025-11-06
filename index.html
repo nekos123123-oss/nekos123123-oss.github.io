@@ -40,12 +40,12 @@
       border-radius:12px; box-shadow:0 0 30px #00ffa8; overflow:hidden;
       max-height:0; opacity:0; transform:scaleY(.95); transition:all .45s ease-out;
     }
-    section.active { padding:28px; max-height:3000px; opacity:1; transform:scaleY(1); }
+    section.active { padding:28px; max-height:4000px; opacity:1; transform:scaleY(1); }
     section h2 { margin-bottom:12px; text-align:center; font-size:1.5rem; text-shadow:0 0 20px #00ffa8; }
 
     ul { list-style:none; margin-top:8px; padding:0; }
     li { display:flex; justify-content:space-between; align-items:center; gap:12px;
-         padding:8px 0; border-bottom:1px solid rgba(255,255,255,0.03); color:#ddd; }
+         padding:8px 0; border-bottom:1px solid rgba(255,255,255,0.03); color:#ddd; flex-wrap:wrap; }
     code { background:rgba(0,255,168,0.08); padding:6px 9px; border-radius:6px; color:#bfffe0; font-family:monospace; }
     .copy-btn { background:#00ffa8; color:#000; border:none; padding:6px 10px; border-radius:6px; cursor:pointer; font-weight:700; }
     .copy-btn:hover { background:#00ffcc; transform:scale(1.03); }
@@ -110,19 +110,51 @@
   <script>
     const treningowe = [
       "sv_cheats 1 – Włącza cheaty",
-      "noclip – Latanie po mapie",
-      "impulse 101 – Daje 16000$",
-      "sv_infinite_ammo 1 – Nieskończona amunicja",
-      "sv_grenade_trajectory 1 – Pokazuje trajektorię granatów",
-      "mp_buy_anywhere 1 – Kupowanie wszędzie"
+      "buddha – Nieśmiertelność",
+      "sv_regeneration_force_on 1 – Regeneracja HP",
+      "sv_regeneration_wait_time 0.5 – Czas regeneracji HP",
+      "noclip – Latanie / przenikanie przez ściany",
+      "bind <klawisz> noclip – Bind na noclip",
+      "sv_noclipspeed X – Prędkość latania",
+      "impulse 101 – 16000$",
+      "sv_infinite_ammo 1 lub 2 – Nieskończona amunicja",
+      "sv_showimpacts 1 – Pokazuje miejsca trafień",
+      "sv_showimpacts_time X – Czas widoczności trafień",
+      "mp_team_intro_time 0 – Wyłącza intro agentów",
+      "sv_grenade_trajectory_prac_trailtime 5 – Linia za granatem",
+      "sv_grenade_trajectory_prac_pipreview 1 – Kamera granatu",
+      "cl_grenadepreview 1 – Podgląd trajektorii granatu",
+      "sv_rethrow_last_grenade – Powtarza ostatni granat",
+      "ammo_grenade_limit_total 5 – Wszystkie granaty na raz",
+      "inferno_flame_lifetime 3 – Szybsze znikanie mołotowów",
+      "mp_roundtime_defuse 60 – Długa runda",
+      "mp_ignore_round_win_conditions 1 – Runda się nie kończy",
+      "mp_buytime 9999 – Nieskończony czas kupowania",
+      "mp_buy_anywhere 1 – Kupowanie wszędzie",
+      "host_timescale X – Spowalnia / przyspiesza czas",
+      "mp_warmup_end – Koniec rozgrzewki",
+      "roundend – Szybkie zakończenie rundy",
+      "mp_free_armor – Auto kamizelka",
+      "mp_solid_teammates 1 – Przenikanie graczy",
+      "mp_give_player_c4 0 – Wyłącza C4",
+      "sv_ignoregrenaderadio 0 – Włącza odgłosy przy rzucaniu"
     ];
 
     const boty = [
+      "bot_quota X – Ilość botów",
       "bot_kick – Wyrzuca wszystkie boty",
+      "bot_kick t – Wyrzuca boty T",
+      "bot_kick ct – Wyrzuca boty CT",
       "bot_add_ct – Dodaje bota CT",
       "bot_add_t – Dodaje bota T",
-      "bot_stop 1 – Zatrzymuje boty",
-      "bot_difficulty 3 – Najtrudniejszy poziom botów"
+      "bot_dont_shoot 1 – Boty nie strzelają",
+      "bot_knives_only 1 – Boty z nożami",
+      "bot_pistols_only 1 – Boty z pistoletami",
+      "bot_all_weapons 1 – Boty z każdą bronią",
+      "bot_stop 1 – Boty stoją",
+      "bot_place – Ustaw bota w miejscu gracza",
+      "bot_crouch – Boty kucają",
+      "bot_difficulty 0–3 – Poziom trudności botów"
     ];
 
     const bronie = [
@@ -135,12 +167,12 @@
       "give weapon_hkp2000 – USP-S",
       "give weapon_flashbang – Flashbang",
       "give weapon_smokegrenade – Smoke",
-      "give weapon_hegrenade – HE granat",
+      "give weapon_hegrenade – HE",
       "give weapon_incgrenade – Incgrenade",
       "give weapon_molotov – Molotov",
       "give weapon_decoy – Decoy",
-      "bind \"klawisz\" \"noclip\" – Bind na latanie (noclip)",
-      "bind \"klawisz\" \"sv_rethrow_last_grenade\" – Bind na ponowne rzucenie granatu"
+      "bind \"klawisz\" \"noclip\" – Latanie po mapie",
+      "bind \"klawisz\" \"sv_rethrow_last_grenade\" – Rzuca ostatni granat"
     ];
 
     function splitCmd(str) {
