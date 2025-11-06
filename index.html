@@ -16,10 +16,24 @@
       background-size: cover;
       color: #f1f1f1;
       text-align: center;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* 🔥 Przyciemnienie tła */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.75);
+      z-index: -1;
     }
 
     header {
-      background-color: rgba(0, 0, 0, 0.7);
+      background-color: rgba(0, 0, 0, 0.8);
       padding: 20px;
       border-bottom: 2px solid #00ffa8;
       box-shadow: 0 0 20px #00ffa8;
@@ -56,7 +70,7 @@
       box-shadow: 0 0 10px #00ffa8;
     }
 
-    nav a:hover {
+    nav a:hover, nav a.active {
       background-color: #00ffa8;
       color: #000;
       text-shadow: none;
@@ -70,4 +84,86 @@
       padding: 40px;
       border-radius: 15px;
       box-shadow: 0 0 30px #00ffa8;
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 0.8s ease-out;
     }
+
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    footer {
+      margin-top: 30px;
+      font-size: 0.9em;
+      color: #aaa;
+      background-color: rgba(0,0,0,0.8);
+      padding: 20px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>CS2 All In One</h1>
+    <nav>
+      <a href="#configi">Configi</a>
+      <a href="#crosshair">Crosshair</a>
+      <a href="#porady">Porady</a>
+    </nav>
+  </header>
+
+  <section id="configi">
+    <h2>Configi</h2>
+    <p>Najlepsze ustawienia dla CS2 – od pro graczy po casuali. Możesz tu wrzucać swoje configi i udostępniać znajomym!</p>
+  </section>
+
+  <section id="crosshair">
+    <h2>Crosshair</h2>
+    <p>Poradnik jak dobrać perfekcyjny celownik, przykłady ustawień i komendy do konsoli.</p>
+  </section>
+
+  <section id="porady">
+    <h2>Porady</h2>
+    <p>Pro tipy, taktyki na mapy, kontrola recoil’a i jak nie dostać z AWP-a w pierwszej rundzie 😎</p>
+  </section>
+
+  <footer>
+    © 2025 CS2 All In One — Strona fanowska, niepowiązana z Valve.
+  </footer>
+
+  <script>
+    // Animacja pojawiania się sekcji
+    const sections = document.querySelectorAll('section');
+    const options = { threshold: 0.3 };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, options);
+
+    sections.forEach(section => observer.observe(section));
+
+    // Podświetlanie aktywnej zakładki
+    const navLinks = document.querySelectorAll('nav a');
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 200;
+        if (pageYOffset >= sectionTop) {
+          current = section.getAttribute('id');
+        }
+      });
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === '#' + current) {
+          link.classList.add('active');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
