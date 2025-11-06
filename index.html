@@ -110,6 +110,55 @@
     ::-webkit-scrollbar-track { background: rgba(0, 0, 0, 0.7); border-radius: 10px; }
     ::-webkit-scrollbar-thumb { background: linear-gradient(180deg, #00ffa8, #009970); border-radius: 10px; box-shadow: 0 0 15px #00ffa8; transition: 0.3s; }
     ::-webkit-scrollbar-thumb:hover { background: linear-gradient(180deg, #00ffbb, #00cc88); box-shadow: 0 0 25px #00ffa8, 0 0 40px #00ffa8; }
+    /* 🔽 Styl dla podsekcji komend (treningowe / boty) */
+.subkomendy {
+  margin: 20px 0;
+  background: rgba(0, 0, 0, 0.7);
+  border: 1px solid #00ffa8;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 0 20px #00ffa8;
+}
+
+.sub-btn {
+  width: 100%;
+  text-align: left;
+  background: linear-gradient(90deg, #00ffa8, #009970);
+  color: #000;
+  font-weight: bold;
+  padding: 15px 20px;
+  font-size: 1.2em;
+  border: none;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: 0.3s;
+}
+
+.sub-btn:hover {
+  background: linear-gradient(90deg, #00ffbb, #00cc88);
+  box-shadow: 0 0 25px #00ffa8;
+}
+
+.sub-list {
+  list-style: none;
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.5s ease;
+  padding: 0 20px;
+}
+
+.sub-list.active {
+  max-height: 2000px;
+  padding: 20px;
+}
+
+.sub-list li {
+  margin: 8px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
   </style>
 </head>
 
@@ -131,10 +180,19 @@
   </nav>
 
   <section id="komendy">
-    <h2>Komendy treningowe CS2</h2>
-    <ul id="komendy-lista"></ul>
-  </section>
+  <h2>Komendy CS2</h2>
 
+  <div class="subkomendy">
+    <button class="sub-btn">⚙️ Komendy treningowe</button>
+    <ul class="sub-list" id="komendy-treningowe"></ul>
+  </div>
+
+  <div class="subkomendy">
+    <button class="sub-btn">🤖 Komendy na boty</button>
+    <ul class="sub-list" id="komendy-boty"></ul>
+  </div>
+  </section>
+  
   <section id="configi">
     <h2>Configi</h2>
     <p>Najlepsze configi od graczy pro — wystarczy skopiować i używać.</p>
@@ -155,58 +213,78 @@
   </footer>
 
   <script>
-    const komendy = [
-      "sv_cheats 1 – Włącza cheaty",
-      "buddha – Nieśmiertelność",
-      "sv_regeneration_force_on 1 – Regeneracja HP",
-      "sv_regeneration_wait_time 0.5 – Czas regeneracji HP",
-      "noclip – Tryb latania / przenikania przez ściany",
-      "sv_noclipspeed X – Prędkość latania",
-      "impulse 101 – Maksymalna kasa",
-      "sv_infinite_ammo 1/2 – Nieskończona amunicja",
-      "sv_showimpacts 1 – Pokazuje trafienia",
-      "sv_showimpacts_time X – Czas trwania znaczników",
-      "mp_team_intro_time 0 – Wyłącza intro agentów",
-      "sv_grenade_trajectory_prac_trailtime 5 – Linia granatu",
-      "sv_grenade_trajectory_prac_pipreview 1 – Kamera granatu",
-      "cl_grenadepreview 1 – Trajektoria trzymanego granatu",
-      "sv_rethrow_last_grenade – Powtarza ostatni rzut",
-      "ammo_grenade_limit_total 5 – Wszystkie granaty naraz",
-      "inferno_flame_lifetime 3 – Krótsze mołotowy",
-      "mp_roundtime_defuse 60 – 60 minut rundy",
-      "mp_ignore_round_win_conditions 1 – Runda się nie kończy",
-      "mp_buytime 9999 – Nieskończony czas kupna",
-      "mp_buy_anywhere 1 – Kupowanie gdziekolwiek",
-      "host_timescale X – Zmienia prędkość gry",
-      "mp_warmup_end – Kończy rozgrzewkę",
-      "roundend – Kończy rundę",
-      "mp_free_armor 1 – Darmowa kamizelka",
-      "mp_solid_teammates 1 – Przenikanie przez sojuszników",
-      "mp_give_player_c4 0 – Wyłącza C4",
-      "sv_ignoregrenaderadio 0 – Włącza głosy przy rzucaniu granatu"
-    ];
+// 🔫 Komendy treningowe (zostają twoje stare)
+const treningowe = [
+  "sv_cheats 1 – Włącza cheaty",
+  "buddha – Nieśmiertelność",
+  "sv_regeneration_force_on 1 – Regeneracja HP",
+  "sv_regeneration_wait_time 0.5 – Czas regeneracji HP",
+  "noclip – Tryb latania / przenikania przez ściany",
+  "sv_noclipspeed X – Prędkość latania",
+  "impulse 101 – Maksymalna kasa",
+  "sv_infinite_ammo 1/2 – Nieskończona amunicja",
+  "sv_showimpacts 1 – Pokazuje trafienia",
+  "sv_showimpacts_time X – Czas trwania znaczników",
+  "mp_team_intro_time 0 – Wyłącza intro agentów",
+  "sv_grenade_trajectory_prac_trailtime 5 – Linia granatu",
+  "sv_grenade_trajectory_prac_pipreview 1 – Kamera granatu",
+  "cl_grenadepreview 1 – Trajektoria trzymanego granatu",
+  "sv_rethrow_last_grenade – Powtarza ostatni rzut",
+  "ammo_grenade_limit_total 5 – Wszystkie granaty naraz",
+  "inferno_flame_lifetime 3 – Krótsze mołotowy",
+  "mp_roundtime_defuse 60 – 60 minut rundy",
+  "mp_ignore_round_win_conditions 1 – Runda się nie kończy",
+  "mp_buytime 9999 – Nieskończony czas kupna",
+  "mp_buy_anywhere 1 – Kupowanie gdziekolwiek",
+  "host_timescale X – Zmienia prędkość gry",
+  "mp_warmup_end – Kończy rozgrzewkę",
+  "roundend – Kończy rundę",
+  "mp_free_armor 1 – Darmowa kamizelka",
+  "mp_solid_teammates 1 – Przenikanie przez sojuszników",
+  "mp_give_player_c4 0 – Wyłącza C4",
+  "sv_ignoregrenaderadio 0 – Włącza głosy przy rzucaniu granatu"
+];
 
-    const lista = document.getElementById("komendy-lista");
-    komendy.forEach(k => {
-      const [cmd, desc] = k.split(" – ");
-      const li = document.createElement("li");
-      li.innerHTML = `<code>${cmd}</code> – ${desc} <button class='copy-btn'>Kopiuj</button>`;
-      lista.appendChild(li);
-    });
+// 🤖 Komendy na boty
+const boty = [
+  "bot_quota X – Ilość botów",
+  "bot_kick – Wyrzuca wszystkie boty",
+  "bot_kick t – Wyrzuca boty z drużyny Terro",
+  "bot_kick ct – Wyrzuca boty z drużyny CT",
+  "bot_kick <nick> – Wyrzuca konkretnego bota",
+  "bot_add_ct – Dodaje bota do CT",
+  "bot_add_t – Dodaje bota do T",
+  "bot_dont_shoot 1 – Boty nie strzelają",
+  "bot_knives_only 1 – Tylko noże",
+  "bot_pistols_only 1 – Tylko pistolety",
+  "bot_all_weapons 1 – Wszystkie bronie",
+  "bot_stop 1 – Boty się nie ruszają",
+  "bot_place – Ustawia bota tam, gdzie stoisz",
+  "bot_crouch – Boty kucają",
+  "bot_difficulty 0-3 – Poziom trudności botów"
+];
 
-    // 🔥 Sekcje rozwijane
-    const links = document.querySelectorAll('nav a[data-target]');
-    const sectionsList = document.querySelectorAll('section');
-    links.forEach(link => {
-      link.addEventListener('click', () => {
-        const id = link.getAttribute('data-target');
-        const section = document.getElementById(id);
-        sectionsList.forEach(s => s.classList.remove('active', 'visible'));
-        section.classList.add('active', 'visible');
-        section.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      });
-    });
+// funkcja generująca listy
+function generujListe(id, dane) {
+  const lista = document.getElementById(id);
+  dane.forEach(k => {
+    const [cmd, desc] = k.split(" – ");
+    const li = document.createElement("li");
+    li.innerHTML = `<code>${cmd}</code> – ${desc} <button class='copy-btn'>Kopiuj</button>`;
+    lista.appendChild(li);
+  });
+}
 
+generujListe("komendy-treningowe", treningowe);
+generujListe("komendy-boty", boty);
+
+// rozwijanie podsekcji
+document.querySelectorAll('.sub-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const list = btn.nextElementSibling;
+    list.classList.toggle('active');
+  });
+});
     // 📋 Kopiowanie
     document.addEventListener('click', e => {
       if (e.target.classList.contains('copy-btn')) {
