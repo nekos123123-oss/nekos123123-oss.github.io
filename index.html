@@ -1,176 +1,94 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>CS2 All In One</title>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&display=swap" rel="stylesheet">
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Orbitron', sans-serif; }
-
+    * { margin:0; padding:0; box-sizing:border-box; font-family:'Orbitron',sans-serif; }
     body {
-      background: rgba(0, 0, 0, 0.95) url('thumb-1920-1333090.png') no-repeat center center fixed;
+      background: rgba(0,0,0,0.95) url('thumb-1920-1333090.png') no-repeat center center fixed;
       background-size: cover;
-      color: #fff;
-      min-height: 100vh;
-      overflow-x: hidden;
-      backdrop-filter: blur(5px);
+      color:#fff;
+      min-height:100vh;
+      overflow-x:hidden;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
     }
 
-    header {
-      text-align: center;
-      padding: 60px 20px 20px;
-      font-size: 3em;
-      font-weight: 800;
-      text-shadow: 0 0 30px #00ffa8, 0 0 80px #00ffa8;
-      letter-spacing: 2px;
-    }
+    header { text-align:center; padding:60px 20px 20px; font-size:2.8rem; font-weight:800;
+             text-shadow:0 0 30px #00ffa8,0 0 80px #00ffa8; letter-spacing:2px; }
 
     .intro {
-      text-align: center;
-      max-width: 900px;
-      margin: 40px auto;
-      background: rgba(0, 0, 0, 0.8);
-      padding: 40px;
-      border-radius: 20px;
-      box-shadow: 0 0 40px #00ffa8;
+      text-align:center; max-width:900px; margin:40px auto;
+      background:rgba(0,0,0,0.8); padding:30px; border-radius:16px;
+      box-shadow:0 0 40px #00ffa8;
     }
-
-    .intro h2 { font-size: 1.8em; margin-bottom: 20px; text-shadow: 0 0 20px #00ffa8; }
-    .intro p { font-size: 1.1em; line-height: 1.6em; color: #ccc; }
+    .intro h2 { font-size:1.6rem; margin-bottom:14px; text-shadow:0 0 20px #00ffa8; }
+    .intro p { color:#ccc; line-height:1.6; }
 
     .start-btn {
-      display: inline-block; margin-top: 30px; padding: 15px 40px;
-      background: linear-gradient(90deg, #00ffa8, #009970);
-      color: #000; font-size: 1.2em; font-weight: bold;
-      border-radius: 10px; text-transform: uppercase; letter-spacing: 2px;
-      text-decoration: none; box-shadow: 0 0 25px #00ffa8; transition: all 0.3s;
+      display:inline-block; margin-top:18px; padding:12px 30px;
+      background:linear-gradient(90deg,#00ffa8,#009970); color:#000;
+      border-radius:10px; font-weight:700; text-transform:uppercase; letter-spacing:1px;
+      box-shadow:0 0 25px #00ffa8; text-decoration:none;
     }
+    .start-btn:hover { transform:scale(1.03); }
 
-    .start-btn:hover {
-      background: linear-gradient(90deg, #00ffcc, #00aa88);
-      box-shadow: 0 0 40px #00ffa8, 0 0 80px #00ffa8;
-      transform: scale(1.05);
-    }
+    nav { display:flex; justify-content:center; gap:30px; margin:40px 0; }
+    nav a { color:#00ffa8; font-size:1.05rem; cursor:pointer; text-decoration:none; }
+    nav a.active, nav a:hover { color:#fff; text-shadow:0 0 15px #00ffa8,0 0 30px #00ffa8; }
 
-    nav {
-      display: flex; justify-content: center; gap: 40px; margin: 60px 0 40px;
-    }
-    nav a { color: #00ffa8; font-size: 1.2em; text-decoration: none; transition: 0.3s; cursor: pointer; }
-    nav a:hover, nav a.active { text-shadow: 0 0 15px #00ffa8, 0 0 30px #00ffa8; color: #fff; }
-
+    /* sekcje */
     section {
-      background-color: rgba(0, 0, 0, 0.8);
-      margin: 20px auto;
-      max-width: 900px;
-      padding: 0;
-      border-radius: 15px;
-      box-shadow: 0 0 30px #00ffa8;
-      overflow: hidden;
-      max-height: 0;
-      opacity: 0;
-      transform: scaleY(0.9);
-      transition: all 0.5s ease-out;
+      background:rgba(0,0,0,0.82); margin:18px auto; max-width:900px;
+      border-radius:12px; box-shadow:0 0 30px #00ffa8; overflow:hidden;
+      max-height:0; opacity:0; transform:scaleY(.95); transition:all .45s ease-out;
     }
+    section.active { padding:28px; max-height:3000px; opacity:1; transform:scaleY(1); }
+    section h2 { margin-bottom:12px; text-align:center; font-size:1.5rem; text-shadow:0 0 20px #00ffa8; }
 
-    section.active { padding: 40px; max-height: 3000px; opacity: 1; transform: scaleY(1); }
-    section h2 { margin-bottom: 20px; font-size: 1.8em; text-shadow: 0 0 25px #00ffa8; text-align: center; }
-
-    ul { list-style: none; margin-top: 20px; }
-    li { margin: 10px 0; line-height: 1.5em; display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+    ul { list-style:none; margin-top:8px; padding:0; }
+    li { display:flex; justify-content:space-between; align-items:center; gap:12px;
+         padding:8px 0; border-bottom:1px solid rgba(255,255,255,0.03); color:#ddd; }
 
     code {
-      background: rgba(0, 255, 168, 0.15);
-      padding: 6px 10px;
-      border-radius: 6px;
-      font-family: monospace;
-      color: #00ffb7;
-      box-shadow: 0 0 10px #00ffa8 inset;
+      background:rgba(0,255,168,0.08); padding:6px 9px; border-radius:6px; color:#bfffe0;
+      font-family:monospace;
     }
 
     .copy-btn {
-      background: #00ffa8;
-      color: #000;
-      border: none;
-      padding: 6px 12px;
-      border-radius: 5px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: 0.2s;
+      background:#00ffa8; color:#000; border:none; padding:6px 10px; border-radius:6px;
+      cursor:pointer; font-weight:700;
     }
-    .copy-btn:hover {
-      background: #00ffcc;
-      box-shadow: 0 0 10px #00ffa8;
-      transform: scale(1.05);
-    }
+    .copy-btn:hover { background:#00ffcc; transform:scale(1.03); }
 
-    footer { text-align: center; margin-top: 60px; padding: 20px; color: #aaa; font-size: 0.9em; background-color: rgba(0, 0, 0, 0.7); }
-
-    ::-webkit-scrollbar { width: 10px; }
-    ::-webkit-scrollbar-track { background: rgba(0, 0, 0, 0.7); border-radius: 10px; }
-    ::-webkit-scrollbar-thumb { background: linear-gradient(180deg, #00ffa8, #009970); border-radius: 10px; box-shadow: 0 0 15px #00ffa8; transition: 0.3s; }
-    ::-webkit-scrollbar-thumb:hover { background: linear-gradient(180deg, #00ffbb, #00cc88); box-shadow: 0 0 25px #00ffa8, 0 0 40px #00ffa8; }
-
-    /* 🔽 Styl dla podsekcji komend */
-    .subkomendy {
-      margin: 20px 0;
-      background: rgba(0, 0, 0, 0.7);
-      border: 1px solid #00ffa8;
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: 0 0 20px #00ffa8;
-    }
-
+    /* podsekcje */
+    .subkomendy { margin:12px 0; border:1px solid rgba(0,255,168,0.12); border-radius:10px; overflow:hidden; }
     .sub-btn {
-      width: 100%;
-      text-align: left;
-      background: linear-gradient(90deg, #00ffa8, #009970);
-      color: #000;
-      font-weight: bold;
-      padding: 15px 20px;
-      font-size: 1.2em;
-      border: none;
-      cursor: pointer;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      transition: 0.3s;
+      width:100%; text-align:left; padding:12px 16px; background:linear-gradient(90deg,#00ffa8,#009970);
+      border:none; font-weight:700; cursor:pointer; color:#000; text-transform:uppercase;
     }
+    .sub-list { max-height:0; overflow:hidden; transition:all .4s ease; padding:0 16px; }
+    .sub-list.active { max-height:2000px; padding:16px; }
 
-    .sub-btn:hover {
-      background: linear-gradient(90deg, #00ffbb, #00cc88);
-      box-shadow: 0 0 25px #00ffa8;
-    }
+    footer { text-align:center; margin-top:40px; padding:18px; color:#aaa; font-size:.9rem; background:rgba(0,0,0,0.6); }
 
-    .sub-list {
-      list-style: none;
-      max-height: 0;
-      overflow: hidden;
-      transition: all 0.5s ease;
-      padding: 0 20px;
-    }
-
-    .sub-list.active {
-      max-height: 2000px;
-      padding: 20px;
-    }
-
-    .sub-list li {
-      margin: 8px 0;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
+    /* scrollbar */
+    ::-webkit-scrollbar { width:10px; }
+    ::-webkit-scrollbar-track { background:rgba(0,0,0,0.6); border-radius:10px; }
+    ::-webkit-scrollbar-thumb { background:linear-gradient(180deg,#00ffa8,#009970); border-radius:10px; box-shadow:0 0 15px #00ffa8; }
+    ::-webkit-scrollbar-thumb:hover { background:linear-gradient(180deg,#00ffbb,#00cc88); box-shadow:0 0 30px #00ffa8; }
   </style>
 </head>
-
 <body>
-  <header>💥 CS2 All In One 💥</header>
+  <header>CS2 All In One</header>
 
   <div class="intro">
     <h2>Twoje centrum dowodzenia CS2</h2>
-    <p>Komendy, configi, crosshairy i porady — wszystko w jednym miejscu.  
-      Od teraz trening nie jest nudny, tylko skuteczny 💪</p>
-    <a href="#menu" class="start-btn">Zaczynamy</a>
+    <p>Komendy, boty, configi i porady — wszystko gotowe do szybkiego użycia na lokalnym serwerze.</p>
+    <a class="start-btn" href="#menu">Zaczynamy</a>
   </div>
 
   <nav id="menu">
@@ -184,118 +102,180 @@
     <h2>Komendy CS2</h2>
 
     <div class="subkomendy">
-      <button class="sub-btn">⚙️ Komendy treningowe</button>
+      <button class="sub-btn" type="button">⚙️ Komendy treningowe</button>
       <ul class="sub-list" id="komendy-treningowe"></ul>
     </div>
 
     <div class="subkomendy">
-      <button class="sub-btn">🤖 Komendy na boty</button>
+      <button class="sub-btn" type="button">🤖 Komendy na boty</button>
       <ul class="sub-list" id="komendy-boty"></ul>
     </div>
   </section>
 
-  <section id="configi">
-    <h2>Configi</h2>
-    <p>Najlepsze configi od graczy pro — wystarczy skopiować i używać.</p>
-  </section>
+  <section id="configi"><h2>Configi</h2><p style="padding:0 20px 20px;color:#ccc">Najlepsze configi — wrzuć do cfg i grasz.</p></section>
+  <section id="crosshair"><h2>Crosshair</h2><p style="padding:0 20px 20px;color:#ccc">Przykłady celowników i ustawienia.</p></section>
+  <section id="porady"><h2>Porady</h2><p style="padding:0 20px 20px;color:#ccc">Krótko i na temat — ruch, economy, timing.</p></section>
 
-  <section id="crosshair">
-    <h2>Crosshair</h2>
-    <p>Celowniki, które wyglądają i trafiają lepiej niż AWP s1mple’a.</p>
-  </section>
-
-  <section id="porady">
-    <h2>Porady</h2>
-    <p>Nie tylko aim — taktyka, ruch, timing i trochę psychologii 😎</p>
-  </section>
-
-  <footer>
-    © 2025 CS2 All In One — Strona fanowska, niepowiązana z Valve.
-  </footer>
+  <footer>© 2025 CS2 All In One — fanpage</footer>
 
   <script>
+    // DEBUG start
+    console.log("Script start: DOM should be ready because script is at the end of body.");
+
+    // dane komend (pełna lista treningowe + boty)
     const treningowe = [
-      "sv_cheats 1 – Włącza cheaty",
-      "buddha – Nieśmiertelność",
+      "sv_cheats 1 – Włącza cheaty na serwerze",
+      "buddha – Nieśmiertelność w CS2",
       "sv_regeneration_force_on 1 – Regeneracja HP",
       "sv_regeneration_wait_time 0.5 – Czas regeneracji HP",
-      "noclip – Tryb latania / przenikania przez ściany",
-      "sv_noclipspeed X – Prędkość latania",
-      "impulse 101 – Maksymalna kasa",
-      "sv_infinite_ammo 1/2 – Nieskończona amunicja",
-      "sv_showimpacts 1 – Pokazuje trafienia",
-      "sv_showimpacts_time X – Czas trwania znaczników",
+      "noclip – Tryb latania / przenikania przez ścian",
+      "sv_noclipspeed X – Ustala prędkość latania",
+      "impulse 101 – Daje maksymalną ilość pieniędzy (16000$)",
+      "sv_infinite_ammo 1 – Nieskończona amunicja (no reload)",
+      "sv_infinite_ammo 2 – Nieskończona amunicja (z reload)",
+      "sv_showimpacts 1 – Pokazuje impacty (kwadraciki)",
+      "sv_showimpacts_time X – Czas trwania impactów",
       "mp_team_intro_time 0 – Wyłącza intro agentów",
-      "sv_grenade_trajectory_prac_trailtime 5 – Linia granatu",
-      "sv_grenade_trajectory_prac_pipreview 1 – Kamera granatu",
-      "cl_grenadepreview 1 – Trajektoria trzymanego granatu",
-      "sv_rethrow_last_grenade – Powtarza ostatni rzut",
-      "ammo_grenade_limit_total 5 – Wszystkie granaty naraz",
-      "inferno_flame_lifetime 3 – Krótsze mołotowy",
-      "mp_roundtime_defuse 60 – 60 minut rundy",
+      "sv_grenade_trajectory_prac_trailtime 5 – Linie za granatami (czas)",
+      "sv_grenade_trajectory_prac_pipreview 1 – Kamera granatu (preview)",
+      "cl_grenadepreview 1 – Pokazuje trajektorię trzymanego granatu",
+      "sv_rethrow_last_grenade – Odtwarza ostatnio rzucony granat",
+      "ammo_grenade_limit_total 5 – Możliwość noszenia wszystkich granatów",
+      "inferno_flame_lifetime 3 – Szybsze znikanie molotovów",
+      "mp_roundtime_defuse 60 – Runda trwa 60 minut",
       "mp_ignore_round_win_conditions 1 – Runda się nie kończy",
-      "mp_buytime 9999 – Nieskończony czas kupna",
+      "mp_buytime 9999 – Nieskończony czas na kupno",
       "mp_buy_anywhere 1 – Kupowanie gdziekolwiek",
-      "host_timescale X – Zmienia prędkość gry",
+      "host_timescale X – Zmiana prędkości czasu (czas x)",
       "mp_warmup_end – Kończy rozgrzewkę",
-      "roundend – Kończy rundę",
-      "mp_free_armor 1 – Darmowa kamizelka",
+      "roundend – Szybkie zakończenie rundy",
+      "mp_free_armor 1 – Darmowa kamizelka przy odrodzeniu",
       "mp_solid_teammates 1 – Przenikanie przez sojuszników",
       "mp_give_player_c4 0 – Wyłącza C4",
-      "sv_ignoregrenaderadio 0 – Włącza głosy przy rzucaniu granatu"
+      "sv_ignoregrenaderadio 0 – Włącza odgłosy przy rzucaniu granatów"
     ];
 
     const boty = [
-      "bot_quota X – Ilość botów",
-      "bot_kick – Wyrzuca wszystkie boty",
+      "bot_quota X – Ustala ilość grających botów na serwerze",
+      "bot_kick – Wyrzuca wszystkie boty z serwera",
       "bot_kick t – Wyrzuca boty z drużyny Terro",
       "bot_kick ct – Wyrzuca boty z drużyny CT",
-      "bot_kick <nick> – Wyrzuca konkretnego bota",
-      "bot_add_ct – Dodaje bota do CT",
-      "bot_add_t – Dodaje bota do T",
-      "bot_dont_shoot 1 – Boty nie strzelają",
-      "bot_knives_only 1 – Tylko noże",
-      "bot_pistols_only 1 – Tylko pistolety",
-      "bot_all_weapons 1 – Wszystkie bronie",
-      "bot_stop 1 – Boty się nie ruszają",
-      "bot_place – Ustawia bota tam, gdzie stoisz",
-      "bot_crouch – Boty kucają",
-      "bot_difficulty 0-3 – Poziom trudności botów"
+      "bot_kick <nick> – Wyrzuca danego bota (podaj nick)",
+      "bot_add_ct – Dodaje bota dla drużyny CT",
+      "bot_add_t – Dodaje bota dla drużyny T",
+      "bot_dont_shoot 1 – Boty nie będą strzelać",
+      "bot_knives_only 1 – Boty używają tylko noży",
+      "bot_pistols_only 1 – Boty używają tylko pistoletów",
+      "bot_all_weapons 1 – Boty używają wszystkich broni",
+      "bot_stop 1 – Boty zatrzymują się w miejscu",
+      "bot_place – Ustawia bota w miejscu, w którym stoisz",
+      "bot_crouch – Boty cały czas kucają",
+      "bot_difficulty 0-3 – Poziom trudności botów (0 najłatwiej, 3 najtrudniej)"
     ];
+
+    // pomocniczna funkcja: rozdziela komendę od opisu, obsługuje różne myślniki
+    function splitCmd(str) {
+      // dzieli po ' – ' (EN DASH), ' - ' (hyphen) lub ' — ' (EM DASH) albo zwykły dash bez spacji
+      const parts = str.split(/\s–\s|\s-\s|\s—\s|–|—| - /);
+      if (parts.length >= 2) {
+        const cmd = parts[0].trim();
+        const desc = parts.slice(1).join(' – ').trim();
+        return [cmd, desc];
+      }
+      return [str, ''];
+    }
 
     function generujListe(id, dane) {
       const lista = document.getElementById(id);
+      if (!lista) {
+        console.warn("Brak elementu listy o id:", id);
+        return;
+      }
+      lista.innerHTML = ''; // wyczyść na start
       dane.forEach(k => {
-        const [cmd, desc] = k.split(" – ");
-        const li = document.createElement("li");
-        li.innerHTML = `<code>${cmd}</code> – ${desc} <button class='copy-btn'>Kopiuj</button>`;
+        const [cmd, desc] = splitCmd(k);
+        const li = document.createElement('li');
+        li.innerHTML = `<div style="display:flex;gap:10px;align-items:center"><code>${cmd}</code><span style="color:#bbb">${desc ? '– ' + desc : ''}</span></div><button class='copy-btn' type="button">Kopiuj</button>`;
         lista.appendChild(li);
       });
+      console.log("Wygenerowano listę:", id, "pozycje:", dane.length);
     }
 
+    // generuj listy
     generujListe("komendy-treningowe", treningowe);
     generujListe("komendy-boty", boty);
 
-    document.querySelectorAll('.sub-btn').forEach(btn => {
+    // obsługa rozwijanych podsekcji
+    const subBtns = document.querySelectorAll('.sub-btn');
+    subBtns.forEach(btn => {
       btn.addEventListener('click', () => {
         const list = btn.nextElementSibling;
+        if (!list) return;
         list.classList.toggle('active');
       });
     });
 
-    // 📋 Kopiowanie
-    document.addEventListener('click', e => {
-      if (e.target.classList.contains('copy-btn')) {
-        const code = e.target.parentElement.querySelector('code').textContent;
-        navigator.clipboard.writeText(code);
-        e.target.textContent = 'Skopiowano!';
-        e.target.style.background = '#00cc88';
-        setTimeout(() => {
-          e.target.textContent = 'Kopiuj';
-          e.target.style.background = '#00ffa8';
-        }, 1500);
+    // otwórz domyślnie pierwszy panel treningowe (dla widoczności)
+    const firstList = document.getElementById('komendy-treningowe');
+    if (firstList) firstList.classList.add('active');
+
+    // obsługa kopiowania (delegacja)
+    document.addEventListener('click', (e) => {
+      const target = e.target;
+      if (target && target.classList && target.classList.contains('copy-btn')) {
+        const li = target.closest('li');
+        if (!li) return;
+        const codeEl = li.querySelector('code');
+        if (!codeEl) return;
+        const text = codeEl.textContent.trim();
+        // spróbuj zapisać do schowka
+        navigator.clipboard.writeText(text).then(() => {
+          const old = target.textContent;
+          target.textContent = 'Skopiowano!';
+          target.style.background = '#00cc88';
+          setTimeout(() => { target.textContent = old; target.style.background = ''; }, 1400);
+        }).catch(err => {
+          console.error("Błąd kopiowania:", err);
+          alert("Nie udało się skopiować (przeglądarka zablokowała schowek). Skopiuj ręcznie: " + text);
+        });
       }
     });
+
+    // obsługa górnego menu (przełącz sekcji)
+    const topLinks = document.querySelectorAll('nav a[data-target]');
+    const allSections = document.querySelectorAll('section');
+
+    topLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        const id = link.getAttribute('data-target');
+        const sec = document.getElementById(id);
+        if (!sec) return;
+        // zamknij inne
+        allSections.forEach(s => s.classList.remove('active'));
+        sec.classList.add('active');
+        // w przypadku sekcji komendy — rozwiń pierwszą podlistę dla widoczności
+        if (id === 'komendy') {
+          const st = sec.querySelector('.sub-list');
+          if (st) st.classList.add('active');
+        }
+        sec.scrollIntoView({behavior:'smooth', block:'start'});
+      });
+    });
+
+    // aktywne odznaczanie w menu przy scrollu
+    window.addEventListener('scroll', () => {
+      let cur = '';
+      allSections.forEach(s => {
+        const top = s.getBoundingClientRect().top;
+        if (top <= 150) cur = s.id;
+      });
+      topLinks.forEach(a => {
+        a.classList.toggle('active', a.getAttribute('data-target') === cur);
+      });
+    });
+
+    console.log("Skrypt zainicjowany poprawnie.");
+    // DEBUG end
   </script>
 </body>
 </html>
