@@ -152,40 +152,8 @@ section.active {
   <footer>
     © 2025 CS2 All In One — Strona fanowska, niepowiązana z Valve.
   </footer>
-
-  <script>
-    // Animacja pojawiania się sekcji
-    const sections = document.querySelectorAll('section');
-    const options = { threshold: 0.3 };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, options);
-
-    sections.forEach(section => observer.observe(section));
-
-    // Podświetlanie aktywnej zakładki
-    const navLinks = document.querySelectorAll('nav a');
-    window.addEventListener('scroll', () => {
-      let current = '';
-      sections.forEach(section => {
-        const sectionTop = section.offsetTop - 200;
-        if (pageYOffset >= sectionTop) {
-          current = section.getAttribute('id');
-        }
-      });
-      navLinks.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href') === '#' + current) {
-          link.classList.add('active');
-        }
-      });
-    });
 <script>
+  // 🔥 Sekcje rozwijane po kliknięciu w zakładkę
   const links = document.querySelectorAll('nav a[data-target]');
   const sectionsList = document.querySelectorAll('section');
 
@@ -194,17 +162,46 @@ section.active {
       const id = link.getAttribute('data-target');
       const section = document.getElementById(id);
 
-      // Zamknij wszystkie inne sekcje
-      sectionsList.forEach(s => s.classList.remove('active'));
+      // Zamknij inne sekcje
+      sectionsList.forEach(s => s.classList.remove('active', 'visible'));
 
-      // Otwórz klikniętą sekcję
-      section.classList.add('active');
+      // Otwórz klikniętą i podświetl
+      section.classList.add('active', 'visible');
 
-      // Przewiń lekko w dół do sekcji
+      // Przewiń do sekcji
       section.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+  });
+
+  // ✨ Animacja pojawiania się przy scrollu (dla widocznych sekcji)
+  const observerOptions = { threshold: 0.3 };
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, observerOptions);
+
+  sectionsList.forEach(section => observer.observe(section));
+
+  // 🌈 Podświetlanie aktywnej zakładki
+  const navLinks = document.querySelectorAll('nav a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sectionsList.forEach(section => {
+      const sectionTop = section.offsetTop - 200;
+      if (pageYOffset >= sectionTop) {
+        current = section.getAttribute('id');
+      }
+    });
+    navLinks.forEach(link => {
+      link.classList.remove('active');
+      if (link.getAttribute('data-target') === current) {
+        link.classList.add('active');
+      }
     });
   });
 </script>
 </body>
 </html>
-
