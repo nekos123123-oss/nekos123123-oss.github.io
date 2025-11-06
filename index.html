@@ -101,15 +101,36 @@
       background-color: rgba(0,0,0,0.8);
       padding: 20px;
     }
+    /* 🔽 Sekcje rozwijane */
+section {
+  background-color: rgba(0, 0, 0, 0.75);
+  margin: 20px auto;
+  max-width: 800px;
+  padding: 0;
+  border-radius: 15px;
+  box-shadow: 0 0 30px #00ffa8;
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  transform: scaleY(0.9);
+  transition: all 0.5s ease-out;
+}
+
+section.active {
+  padding: 40px;
+  max-height: 600px;
+  opacity: 1;
+  transform: scaleY(1);
+}
   </style>
 </head>
 <body>
   <header>
     <h1>CS2 All In One</h1>
     <nav>
-      <a href="#configi">Configi</a>
-      <a href="#crosshair">Crosshair</a>
-      <a href="#porady">Porady</a>
+  <a data-target="configi">Configi</a>
+  <a data-target="crosshair">Crosshair</a>
+  <a data-target="porady">Porady</a>
     </nav>
   </header>
 
@@ -164,6 +185,26 @@
         }
       });
     });
-  </script>
+<script>
+  const links = document.querySelectorAll('nav a[data-target]');
+  const sectionsList = document.querySelectorAll('section');
+
+  links.forEach(link => {
+    link.addEventListener('click', () => {
+      const id = link.getAttribute('data-target');
+      const section = document.getElementById(id);
+
+      // Zamknij wszystkie inne sekcje
+      sectionsList.forEach(s => s.classList.remove('active'));
+
+      // Otwórz klikniętą sekcję
+      section.classList.add('active');
+
+      // Przewiń lekko w dół do sekcji
+      section.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+  });
+</script>
 </body>
 </html>
+
