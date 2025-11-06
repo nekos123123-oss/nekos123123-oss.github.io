@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CS2 All In One</title>
   <style>
-    /* 🔥 Ogólny styl */
     * {
       margin: 0;
       padding: 0;
@@ -23,17 +22,63 @@
 
     header {
       text-align: center;
-      padding: 40px 0;
-      font-size: 2.5em;
-      font-weight: bold;
+      padding: 60px 20px 20px;
+      font-size: 3em;
+      font-weight: 800;
+      text-shadow: 0 0 25px #00ffa8, 0 0 60px #00ffa8;
+      letter-spacing: 1px;
+    }
+
+    .intro {
+      text-align: center;
+      max-width: 900px;
+      margin: 40px auto;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 0 40px #00ffa8;
+      backdrop-filter: blur(4px);
+    }
+
+    .intro h2 {
+      font-size: 1.8em;
+      margin-bottom: 20px;
       text-shadow: 0 0 20px #00ffa8;
+    }
+
+    .intro p {
+      font-size: 1.1em;
+      line-height: 1.6em;
+      color: #ccc;
+    }
+
+    .start-btn {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 15px 40px;
+      background: linear-gradient(90deg, #00ffa8, #009970);
+      color: #000;
+      font-size: 1.2em;
+      font-weight: bold;
+      border-radius: 10px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      text-decoration: none;
+      box-shadow: 0 0 25px #00ffa8;
+      transition: all 0.3s;
+    }
+
+    .start-btn:hover {
+      background: linear-gradient(90deg, #00ffcc, #00aa88);
+      box-shadow: 0 0 40px #00ffa8, 0 0 80px #00ffa8;
+      transform: scale(1.05);
     }
 
     nav {
       display: flex;
       justify-content: center;
       gap: 30px;
-      margin-bottom: 40px;
+      margin: 60px 0 40px;
     }
 
     nav a {
@@ -50,7 +95,6 @@
       color: #fff;
     }
 
-    /* 🔽 Sekcje rozwijane */
     section {
       background-color: rgba(0, 0, 0, 0.75);
       margin: 20px auto;
@@ -78,14 +122,13 @@
 
     footer {
       text-align: center;
-      margin-top: 50px;
+      margin-top: 60px;
       padding: 20px;
       color: #aaa;
       font-size: 0.9em;
       background-color: rgba(0, 0, 0, 0.7);
     }
 
-    /* 🌈 Custom Scrollbar */
     ::-webkit-scrollbar {
       width: 10px;
     }
@@ -108,11 +151,19 @@
     }
   </style>
 </head>
-
 <body>
-  <header>💥 CS2 All In One 💥</header>
+  <header>🔥 CS2 All In One 🔥</header>
 
-  <nav>
+  <div class="intro">
+    <h2>Witaj w centrum dowodzenia gracza CS2</h2>
+    <p>
+      Jeśli myślisz, że masz dobrego aim’a, to sprawdź go po tym, jak ustawisz wszystko pod siebie.  
+      Znajdziesz tu configi, celowniki, porady i triki — jednym słowem, wszystko, co trzeba, żeby przestać być randomem z MM.
+    </p>
+    <a href="#menu" class="start-btn">Zaczynamy</a>
+  </div>
+
+  <nav id="menu">
     <a data-target="configi">Configi</a>
     <a data-target="crosshair">Crosshair</a>
     <a data-target="porady">Porady</a>
@@ -120,17 +171,18 @@
 
   <section id="configi">
     <h2>Configi</h2>
-    <p>Znajdziesz tu najlepsze configi pro graczy CS2. Kliknij, skopiuj, dominuj.</p>
+    <p>Najlepsze configi od pro graczy. Skopiuj, wklej, zniszcz matchmaking.</p>
   </section>
 
   <section id="crosshair">
     <h2>Crosshair</h2>
-    <p>Wybierz idealny celownik — minimalny recoil, maksymalna skuteczność.</p>
+    <p>Idealne celowniki dla każdego stylu — od s1mple’a po twojego smoka z silvera.</p>
   </section>
 
   <section id="porady">
     <h2>Porady</h2>
-    <p>Poradnik dla początkujących i zaawansowanych — ruch, celowanie, ekonomia i taktyka.</p>
+    <p>Jak nie dać się zabić w pierwszych 10 sekundach rundy.  
+       Plus kilka sztuczek, o których nie mówi nawet Twój coach z Faceita.</p>
   </section>
 
   <footer>
@@ -138,7 +190,6 @@
   </footer>
 
   <script>
-    // 🔥 Sekcje rozwijane po kliknięciu
     const links = document.querySelectorAll('nav a[data-target]');
     const sectionsList = document.querySelectorAll('section');
 
@@ -146,45 +197,30 @@
       link.addEventListener('click', () => {
         const id = link.getAttribute('data-target');
         const section = document.getElementById(id);
-
-        // Zamknij inne sekcje
         sectionsList.forEach(s => s.classList.remove('active', 'visible'));
-
-        // Otwórz klikniętą
         section.classList.add('active', 'visible');
-
-        // Przewiń do sekcji
         section.scrollIntoView({ behavior: 'smooth', block: 'center' });
       });
     });
 
-    // ✨ Animacja pojawiania się przy scrollu
     const observerOptions = { threshold: 0.3 };
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
+        if (entry.isIntersecting) entry.target.classList.add('visible');
       });
     }, observerOptions);
-
     sectionsList.forEach(section => observer.observe(section));
 
-    // 🌈 Podświetlanie aktywnej zakładki
     const navLinks = document.querySelectorAll('nav a');
     window.addEventListener('scroll', () => {
       let current = '';
       sectionsList.forEach(section => {
         const sectionTop = section.offsetTop - 200;
-        if (pageYOffset >= sectionTop) {
-          current = section.getAttribute('id');
-        }
+        if (pageYOffset >= sectionTop) current = section.getAttribute('id');
       });
       navLinks.forEach(link => {
         link.classList.remove('active');
-        if (link.getAttribute('data-target') === current) {
-          link.classList.add('active');
-        }
+        if (link.getAttribute('data-target') === current) link.classList.add('active');
       });
     });
   </script>
